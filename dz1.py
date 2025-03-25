@@ -1,16 +1,25 @@
-from random import randint
+import os
 
+file = "text3.txt"
+f = open(file, "w")
+f.write("Замена строки в текстовом файле;\n"
+        "изменить строку в списке;\n"
+        "записать список в файл;\n")
 
-def x(a, b)
-    return tuple(randint(a, b) for _ in range(10))
+f.close()
 
+if os.path.exists(file):
+    f = open(file, "r")
+    read_line = f.readlines()
+    f.close()
 
-tpl1 = x(0, 5)
-print(tpl1)
-tpl2 = x(-5, 0)
-print(tpl2)
+    pos1 = int(input("pos1 = ")) - 1
+    pos2 = int(input("pos2 = ")) - 1
 
-tpl3 = tpl1 + tpl2
-print(tpl3)
-tpl4 = tpl3.count(0)
-print(tpl4)
+if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
+    if 0 < pos1 <= len(read_line) and 0 < pos2 <= len(read_line):
+        if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
+            read_line[pos1], read_line[pos2] = read_line[pos2], read_line[pos1]
+        else:
+            print("Такой строки нет")
+        print(read_line)

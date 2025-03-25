@@ -1,6 +1,6 @@
 import os
 
-file = "text3.txt"
+file = ".venv/text3.txt"
 f = open(file, "w")
 f.write("Замена строки в текстовом файле;\n"
         "изменить строку в списке;\n"
@@ -13,7 +13,7 @@ if os.path.exists(file):
     read_line = f.readlines()
     f.close()
 
-    pos1 = int(input("pos1 = ")) - 1
+    pos1 = int(input("pos1 = ")) - 1  
     pos2 = int(input("pos2 = ")) - 1
 
 if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
@@ -23,6 +23,3 @@ if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):
         else:
             print("Такой строки нет")
         print(read_line)
-
-
-
