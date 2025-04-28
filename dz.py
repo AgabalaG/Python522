@@ -1,87 +1,200 @@
-# class Car:
-#
-#     def __init__(self, model_name, year_of_manufacture, manufacturer, engine_power, color, price):
-#
-#         self._model_name = model_name
-#         self._year_of_manufacture = year_of_manufacture
-#         self._manufacturer = manufacturer
-#         self._engine_power = engine_power
-#         self._color = color
-#         self._price = price
-#
-#     def get_model_name(self):
-#        return self._model_name
-#
-#     def set_model_name(self, model_name):
-#         self._model_name = model_name
-#
-#     def get_year_of_manufacture(self):
-#         return self._year_of_manufacture
-#
-#     def set_year_of_manufacture(self, year_of_manufacture):
-#         self._year_of_manufacture = year_of_manufacture
-#
-#     def get_manufacturer(self):
-#         return self._manufacturer
-#
-#     def set_manufacturer(self, manufacturer):
-#         self._manufacturer = manufacturer
-#
-#     def get_engine_power(self):
-#         return self._engine_power
-#
-#     def set_engine_power(self, engine_power):
-#         self._engine_power = engine_power
-#
-#     def get_color(self):
-#         return self._color
-#
-#     def set_color(self, color):
-#         self._color = color
-#
-#     def get_price(self):
-#         return self._price
-#
-#     def set_price(self, price):
-#         self._price = price
-#
-#     def display_data(self):
-#         print("********** Данные автомобиля ***********")
-#         print(f"Название модели: {self._model_name}")
-#         print(f"Год выпуска: {self._year_of_manufacture}")
-#         print(f"Производитель: {self._manufacturer}")
-#         print(f"Мощность двигателя: {self._engine_power} л.с.")
-#         print(f"Цвет машины: {self._color}")
-#         print(f"Цена: {self._price}")
-#         print("==========================================")
-#
-#     def input_data(self):
-#         self._model_name = input("Введите название модели: ")
-#         self._year_of_manufacture = int(input("Введите год выпуска: "))
-#         self._manufacturer = input("Введите производителя: ")
-#         self._engine_power = int(input("Введите мощность двигателя (л.с.): "))
-#         self._color = input("Введите цвет машины: ")
-#         self._price = float(input("Введите цену: "))
+# import datetime
 #
 #
+# class MyTime:
+#     def __init__(self, hours, minutes, seconds):
+#         self.hours = hours
+#         self.minutes = minutes
+#         self.seconds = seconds
 #
-# if __name__ == "__main__":
+#     def __str__(self):
+#         return f"{self.hours:02}:{self.minutes:02}:{self.seconds:02}"
 #
-#     car1 = Car("X7 M50i", 2021, "BMW", 530, "white", 10790000)
+#     def to_seconds(self):
+#         return self.hours * 3600 + self.minutes * 60 + self.seconds
+#
+#     @classmethod
+#     def from_seconds(cls, total_seconds):
+#         hours = total_seconds // 3600
+#         total_seconds %= 3600
+#         minutes = total_seconds // 60
+#         seconds = total_seconds % 60
+#         return cls(hours, minutes, seconds)
+#
+#     def __sub__(self, other):
+#         seconds1 = self.to_seconds()
+#         seconds2 = other.to_seconds()
+#         result_seconds = seconds1 - seconds2
+#         if result_seconds < 0:
+#             result_seconds = 0
+#         return MyTime.from_seconds(result_seconds)
+#
+#     def __mul__(self, other):
+#         seconds = self.to_seconds()
+#         result_seconds = seconds * other
+#         return MyTime.from_seconds(result_seconds)
+#
+#     def __floordiv__(self, other):
+#         seconds = self.to_seconds()
+#         result_seconds = seconds // other
+#         return MyTime.from_seconds(result_seconds)
+#
+#     def __mod__(self, other):
+#         seconds = self.to_seconds()
+#         result_seconds = seconds % other
+#         return MyTime.from_seconds(result_seconds)
+#
+#     def __isub__(self, other):
+#         result = self - other
+#         self.hours = result.hours
+#         self.minutes = result.minutes
+#         self.seconds = result.seconds
+#         return self
+#
+#     def __imul__(self, other):
+#         result = self * other
+#         self.hours = result.hours
+#         self.minutes = result.minutes
+#         self.seconds = result.seconds
+#         return self
+#
+#     def __ifloordiv__(self, other):
+#         result = self // other
+#         self.hours = result.hours
+#         self.minutes = result.minutes
+#         self.seconds = result.seconds
+#         return self
+#
+#     def __imod__(self, other):
+#         result = self % other
+#         self.hours = result.hours
+#         self.minutes = result.minutes
+#         self.seconds = result.seconds
+#         return self
 #
 #
-#     car1.display_data()
+# c1 = MyTime(0, 10, 0)
+# c2 = MyTime(0, 3, 20)
 #
+# print(f"c1: {c1}")
 #
-#     car1.set_color("black")
-#     car1.set_price(11000000)
-#     car1.display_data()
+# print(f"c1 - c2: {c1 - c2}")
+# print(f"c1 * c2: {c1 * 3}")
+# print(f"c1 // c2: {c1 // 3}")
+# print(f"c1 % c2: {c1 % 3}")
 #
+# c3 = MyTime(0, 10, 0)
+# c4 = MyTime(0, 3, 20)
 #
-#     car2 = Car("", 0, "", 0, "", 0)
-#     car2.input_data()
-#     car2.display_data()
+# c3 -= c4
+# print(f"c1 -= c2: {c3}")
 #
+# c3 = MyTime(0, 10, 0)
+# c3 *= 3
+# print(f"c1 *= c2: {c3}")
 #
-#     print(f"Car Model Name: {car2.get_model_name()}")
-#     print(f"Car Price: {car2.get_price()}")
+# c3 = MyTime(0, 10, 0)
+# c3 //= 3
+# print(f"c1 //= c2: {c3}")
+#
+# c3 = MyTime(0, 10, 0)
+# c3 %= 3
+# print(f"c1 %= c2: {c3}")
+
+
+class MyTime:
+    def __init__(self, hours, minutes, seconds):
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
+
+    def __str__(self):
+        return f"{self.hours:02}:{self.minutes:02}:{self.seconds:02}"
+
+    def to_seconds(self):
+        return self.hours * 3600 + self.minutes * 60 + self.seconds
+
+    @classmethod
+    def from_seconds(cls, total_seconds):
+        hours = total_seconds // 3600
+        total_seconds %= 3600
+        minutes = total_seconds // 60
+        seconds = total_seconds % 60
+        return cls(hours, minutes, seconds)
+
+    def __sub__(self, other):
+        seconds1 = self.to_seconds()
+        seconds2 = other.to_seconds()
+        result_seconds = seconds1 - seconds2
+        if result_seconds < 0:
+            result_seconds = 0
+        return MyTime.from_seconds(result_seconds)
+
+    def __mul__(self, other):
+        seconds = self.to_seconds()
+        result_seconds = seconds * other
+        return MyTime.from_seconds(result_seconds)
+
+    def __floordiv__(self, other):
+        seconds = self.to_seconds()
+        result_seconds = seconds // other
+        return MyTime.from_seconds(result_seconds)
+
+    def __mod__(self, other):
+        seconds = self.to_seconds()
+        result_seconds = seconds % other
+        return MyTime.from_seconds(result_seconds)
+
+    def __isub__(self, other):
+         result = self - other
+         self.hours = result.hours
+         self.minutes = result.minutes
+         self.seconds = result.seconds
+         return self
+
+    def __imul__(self, other):
+        result = self * other
+        self.hours = result.hours
+        self.minutes = result.minutes
+        self.seconds = result.seconds
+        return self
+
+    def __ifloordiv__(self, other):
+        result = self // other
+        self.hours = result.hours
+        self.minutes = result.minutes
+        self.seconds = result.seconds
+        return self
+
+    def __imod__(self, other):
+        result = self % other
+        self.hours = result.hours
+        self.minutes = result.minutes
+        self.seconds = result.seconds
+        return self
+    def __gt__(self, other):
+        return self.to_seconds() > other.to_seconds()
+
+    def __ge__(self, other):
+        return self.to_seconds() >= other.to_seconds()
+
+    def __lt__(self, other):
+        return self.to_seconds() < other.to_seconds()
+
+    def __le__(self, other):
+        return self.to_seconds() <= other.to_seconds()
+
+    def __eq__(self, other):
+        return self.to_seconds() == other.to_seconds()
+
+    def __ne__(self, other):
+        return self.to_seconds() != other.to_seconds()
+
+
+c1 = MyTime(0, 10, 0)
+c3 = MyTime(0, 15, 0)
+
+print(f"c3 > c1 {c3 > c1}")
+print(f"c3 >= c1 {c3 >= c1}")
+print(f"c3 < c1 {c3 < c1}")
+print(f"c3 <= c1 {c3 <= c1}")
