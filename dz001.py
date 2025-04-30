@@ -1,63 +1,96 @@
-from math import sqrt
+import abc
+import math
+
+class Shape(abc.ABC):
+    def __init__(self, color):
+        self.color = color
+
+    @abc.abstractmethod
+    def calculate_perimeter(self):
+        pass
+
+    @abc.abstractmethod
+    def calculate_area(self):
+        pass
+
+    @abc.abstractmethod
+    def draw(self):
+        pass
+
+    def display_info(self):
+        print(f"Цвет: {self.color}")
+        print(f"Площадь: {self.calculate_area()}")
+        print(f"Периметр: {self.calculate_perimeter()}")
+        self.draw()
 
 
-class Pair:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+class Square(Shape):
+    def __init__(self, side, color):
+        super().__init__(color)
+        self.side = side
 
-    def edit_a(self, a):
-        self.a = a
+    def calculate_perimeter(self):
+        return 4 * self.side
 
-    def edit_b(self, b):
-        self.b = b
+    def calculate_area(self):
+        return self.side ** 2
 
-    def sum(self):
-        return self.a + self.b
-
-    def mult(self):
-        return self.a * self.b
+    def draw(self):
+        for i in range(self.side):
+            print("*" * self.side)
 
 
-class RightTriangle(Pair):
-    def __init__(self, a, b):
-        super().__init__(a, b)
-        self.c = self.hypotenuse()
+class Rectangle(Shape):
+    def __init__(self, length, width, color):
+        super().__init__(color)
+        self.length = length
+        self.width = width
 
-    def hypotenuse(self):
-        hypot = round(sqrt(self.a ** 2 + self.b ** 2), 2)
-        print(f"Гипотенуза ABC: {hypot}")
-        return hypot
+    def calculate_perimeter(self):
+        return 2 * (self.length + self.width)
 
-    def print_info(self):
-        print(f"Прямоугольный треугольник ABC: ({self.a}, {self.b}, {self.c})")
+    def calculate_area(self):
+        return self.length * self.width
 
-    def square(self):
-        s = 0.5 * self.mult()
-        print(f"Площадь ABC: {s}")
-
-    def edit_a(self, a):
-        super().edit_a(a)
-        self.c = self.hypotenuse()
-
-    def edit_b(self, b):
-        super().edit_b(b)
-        self.c = self.hypotenuse()
+    def draw(self):
+        for i in range(self.width):
+            print("*" * self.length)
 
 
-tr = RightTriangle(5, 8)
-tr.print_info()
-tr.square()
-print()
+class Triangle(Shape):
+    def __init__(self, side1, side2, side3, color):
+        super().__init__(color)
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
 
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
+    def calculate_perimeter(self):
+        return self.side1 + self.side2 + self.side3
 
-print()
+    def calculate_area(self):
+        s = (self.side1 + self.side2 + self.side3) / 2
+        return math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3))
 
-tr.edit_a(10)
-tr.edit_b(20)
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
-tr.square()
-print(tr)
+    def draw(self):
+        for i in range(1, int(self.calculate_perimeter() / 3) + 1):
+            print("*" * i)
+
+
+square = Square(side=3, color="red")
+print("===Квадрат===")
+print(f"Сторона: {square.side}")
+square.display_info()
+
+rectangle = Rectangle(length=3, width=7, color="green")
+print("\n===Прямоугольник===")
+print(f"Длина: {rectangle.length}")
+print(f"Ширина: {rectangle.width}")
+rectangle.display_info()
+
+triangle = Triangle(side1=11, side2=2, side3=6, color="yellow")
+print("\n===Треугольник===")
+print(f"Сторона 1: {triangle.side1}")
+print(f"Сторона 2: {triangle.side2}")
+print(f"Сторона 3: {triangle.side3}")
+triangle.display_info()
+
