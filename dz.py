@@ -23,12 +23,8 @@ data = {
     }
 }
 
-# Пример использования:
-# Вывод данных в формате JSON с отступами для читаемости
 print(json.dumps(data, indent=4))
 
-# Пример доступа к данным:
-# Получение имени по ключу
 key = "1441751072"
 if key in data:
     name = data[key]["name"]
@@ -36,7 +32,6 @@ if key in data:
 else:
     print(f"Ключ {key} не найден.")
 
-# Пример итерации по данным
 for key, value in data.items():
     name = value["name"]
     tel = value["tel"]
