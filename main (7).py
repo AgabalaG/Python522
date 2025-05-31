@@ -6399,7 +6399,7 @@
 
 
 
-import sqlite3
+# import sqlite3
 
 # with sqlite3.connect("users.db") as con:
 #     cur = con.cursor()
@@ -6453,3 +6453,41 @@ import sqlite3
     # res1 = cur.fetchone()
     # print(res1)
 
+
+
+# lst = ["a", "b", "c"]
+# print(sum(lst))
+
+# lst1 = [1, 2, 3]
+# res = 0
+# for i in lst:
+#     res += i
+#
+# print(res)
+
+
+import sqlite3
+
+list_cars = [
+    ('BMW', 54000),
+    ('Chevrolet', 46000),
+    ('Daewoo', 38000),
+    ('Citroen', 29000),
+    ('Honda', 33000)
+
+]
+
+with sqlite3.connect('cars.db') as con:
+    cur =con.cursor()
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS cars(
+        car_id INTEGER PRIMARY KEY AUTOINCREMENT
+        )""")
+    for car in list_cars:
+        cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+
+    # cur.execute("""CREATE TABLE IF NOT EXISTS cars(    car_id INTEGER PRIMARY KEY AUTOINCREMENT)""")
+
+
+    # con.commit()
+    # con.close()
