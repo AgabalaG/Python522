@@ -6466,28 +6466,324 @@
 # print(res)
 
 
-import sqlite3
+# import sqlite3
+#
+# list_cars = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000)
+#
+# ]
+#
+# with sqlite3.connect('cars.db') as con:
+#     cur =con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT
+#         )""")
+#     for car in list_cars:
+#         cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+#
+#     # cur.execute("""CREATE TABLE IF NOT EXISTS cars(    car_id INTEGER PRIMARY KEY AUTOINCREMENT)""")
+#
+#
+#     # con.commit()
+#     # con.close()
 
-list_cars = [
-    ('BMW', 54000),
-    ('Chevrolet', 46000),
-    ('Daewoo', 38000),
-    ('Citroen', 29000),
-    ('Honda', 33000)
 
-]
+# c = "2" - "1"
+# print(c)
 
-with sqlite3.connect('cars.db') as con:
-    cur =con.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS cars(
-        car_id INTEGER PRIMARY KEY AUTOINCREMENT
-        )""")
-    for car in list_cars:
-        cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+# n = 2.8956
+# print(f'{n:.2f}')
 
-    # cur.execute("""CREATE TABLE IF NOT EXISTS cars(    car_id INTEGER PRIMARY KEY AUTOINCREMENT)""")
+# e = lambda x: x
+#
+# a ={1, 2, 3}
+#
+# b = e(a)
+#
+# print(a == b)
+
+# b = [1, 2 , 3] + []
+# print(b)
+
+# dict = {{{'Socrat': 'Empty'}: {'Plato': 'A lot of material'}}: 'again'}
+# key = {'Socrat': 'Empty'}
+# print(dict[key]['Plato'])
+
+# old_dict = {'a': 10, 'b': 10}
+# new_dict = {}
+#
+# for i, j in old_dict.items():
+#     new_dict[j] = i
+#
+# print(new_dict)
+
+# d = "str"
+# print(d[2])
+
+# e = id({1}) == id({1})
+# print(e)
+
+# try:
+#     print(1)
+# except Exception:
+#     print(0)
+
+# b = set("ppp")
+# print(str(b)== "p")
+#
+# a = int("qwerty")
+# print(a)
 
 
-    # con.commit()
-    # con.close()
+# d = {1, 2} == set([1, 2])
+# print(d)
+
+# x = 23
+# num = 0 if x > 10 else 11
+# print(num)
+#
+# a -= 1
+# print(a)
+
+# a = lambda x: x + x
+# print(a(2))
+
+# for i in range(1):
+#     print(i)
+
+# import random
+#
+# print(2.1 == random.uniform(2.1, 2.1))
+
+
+# for i in "str":
+#     print(i.upper(), end=".")
+
+# e = "string"
+#
+# print(e[-3:6])
+
+# for i in 'hello world':
+#     if i == 'o':
+#         break
+#     print(i * 2, end='')
+
+# for i in range(len("str")):
+#     if i != 2:
+#         print("str"[i], end="-")
+#     else:
+#         print("str"[1])
+
+
+# proghubPython = True
+#
+# def fun1():
+#     proghubPython = None
+#
+#     def fun2():
+#         global proghubPython
+#         proghubPython = 'py'
+#
+#     fun2()
+#
+# fun1()
+# print(proghubPython)
+
+
+# try:
+#     b = 1 / 0
+# except ZeroDivisionError:
+#     b = 0
+#
+# print(b)
+
+
+# import random
+#
+# print(random.random())
+#
+# b = lambda x, y: print(y)
+#
+# b(1, 2)
+
+
+# c = lambda x: print(0)
+#
+# c(5)
+
+
+# for i in range(5):
+#     if i % 2 == 0:
+#         continue
+#     print(i)
+
+# proghubPython = True
+#
+# def fun1():
+#     global proghubPython
+#     proghubPython = None
+#
+#     def fun2():
+#         proghubPython = 'py'
+#
+#     fun2()
+#
+#
+# fun1()
+# print(proghubPython)
+
+
+# d = {}
+# if d:
+#     print("Hello, world!")
+# else:
+#     print("It is empty")
+
+
+# tuple_1 = (1, 2, 3)
+# tuple_2 = (4, 5, 6)
+# tuple_3 = tuple_1 + tuple_2
+# print(tuple_1 < tuple_2)
+# print(tuple_2 < tuple_3)
+# print(tuple_1 < tuple_3)
+
+
+
+# c = id([1]) == id([1,0])
+# print(c)
+
+# another_dict = {'a': {'a': ['a']}}
+# print(another_dict.pop('a') == another_dict.clear())
+
+
+
+# a = [1] + [1]
+# print(a)
+
+# c = "some  str"
+# print(c[-3:9] + " " + c[0:5])
+
+# e = [1] + "1"
+# print(e)
+
+# for i in range(-2):
+#     print(i)
+
+#
+# c = type({1: 2, 2: 1}) == type({1, 2})
+# print(c)
+
+
+# c = [1, 2] + [0]
+# print(c)
+
+# a = [1, 2] - 1
+# print(a)
+#
+# while 1:
+#     print(1, break)
+
+# a = 10
+# print(b)
+
+# import random
+#
+# print(random.uniform(1, 1.1))
+
+# a = {'a':10, 'c': 10}
+# b = {'c': 20, 'e': 5}
+#
+# for i in a.keys():
+#     if i not in b:
+#         b[i] = a[i]
+#
+# print(b)
+
+# def get_sum(a=2, b=3):
+#     print(a+b)
+#
+#
+#
+# get_sum(4)
+
+
+# d = [1] * 2
+# print(d)
+
+# a = 1
+#
+# for i in range(5):
+#     a = a * i
+#
+# print(a)
+
+# b = lambda: print("str")
+# type(b())
+
+# d = "some string"
+#
+# d[5:12] = "int"
+#
+# print(d)
+
+# try:
+#     a = 2 + '1'
+#     print(a)
+# except TypeError:
+#     print("Error")
+
+
+# def factorial(n):
+#     if n == 0:
+#         return 1
+#     else:
+#         return n * factorial(n - 1)
+#
+# print(factorial(5))
+#
+# c = frozenset([1, 2, 3]) == {1, 2, 3}
+# print(c)
+#
+# squares = map(lambda x: x * x, [0, 1, 2, 3, 4])
+#
+# print(list(squares))
+
+# d =lambda: False
+# print(d())
+
+# b = "python"
+# print(b[:6:2])
+#
+# c = "str"
+# print(c[0:3])
+
+# a = set("hello")
+# print(len(a))
+
+# a = "str"
+# print(len(a))
+
+# for i in 'hello world':
+#     print(i * 2, end='')
+
+# proghubPython = True
+#
+# def fun1():
+#     proghubPython = None
+#
+#     def fun2():
+#        nonlocal proghubPython
+#        proghubPython = 'py'
+#     fun2()
+#
+# fun1()
+# print(proghubPython)
+
+
+# d = [1, 1, 2]
+# print(len(set(d)))
