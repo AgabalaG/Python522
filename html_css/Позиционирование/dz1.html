@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Рисунок в HTML</title>
+<style>
+  body {
+    background-color: #ccc; /* фон */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(19, 30px);
+    grid-template-rows: repeat(12, 30px);
+    gap: 1px;
+    background-color: #999; /* цвет "рамки" между ячейками */
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+    background-color: #a4976e; /* базовый коричневый цвет */
+    border: 1px solid #666;
+    box-sizing: border-box;
+  }
+
+  /* Цвета */
+  .gray {
+    background-color: #d7d7d7;
+  }
+
+  .yellow {
+    background-color: #fffb00;
+  }
+
+  .blue {
+    background-color: #4a7bd4;
+  }
+
+  .purple {
+    background-color: #a79ecb;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+  <!-- Ряд 1 -->
+  <div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div>
+
+  <!-- Ряд 2 -->
+  <div class="gray"></div><div class="gray"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div>
+
+  <!-- Ряд 3 -->
+  <div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 4 -->
+  <div class="a"></div><div class="a"></div><div class="purple"></div><div class="purple"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="blue"></div><div class="blue"></div><div class="blue"></div><div class="blue"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="purple"></div><div class="purple"></div><div class="a"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 5 -->
+  <div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 6 -->
+  <div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="blue"></div><div class="blue"></div><div class="blue"></div><div class="blue"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 7 -->
+  <div class="a"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 8 -->
+  <div class="a"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="purple"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 9 -->
+  <div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div>
+
+  <!-- Ряд 10 -->
+  <div class="gray"></div><div class="gray"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="gray"></div><div class="gray"></div>
+
+  <!-- Ряд 11 -->
+  <div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="a"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div>
+
+  <!-- Ряд 12 -->
+  <div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div><div class="gray"></div>
+
+</div>
+
+</body>
+</html>
