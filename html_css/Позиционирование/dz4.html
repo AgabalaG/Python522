@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теория цвета</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0;
+        }
+        
+        .indent {
+            text-indent: 1.5em;
+        }
+        
+        .line-break {
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .italic {
+            font-style: italic;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        /* Стили для цветных букв */
+        .rainbow-text {
+            background: linear-gradient(90deg, 
+                #ff0000, #ff8000, #ffff00, 
+                #80ff00, #00ff00, #00ff80,
+                #00ffff, #0080ff, #0000ff,
+                #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 1200% 100%;
+            animation: rainbow 12s linear infinite;
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .rainbow-letter {
+            display: inline-block;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff8000, #ffff00, 
+                #80ff00, #00ff00, #00ff80,
+                #00ffff, #0080ff, #0000ff,
+                #8000ff, #ff00ff, #ff0080);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 1200% 100%;
+            animation: rainbow 12s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="rainbow-text">Теория цвета. Математические цветовые модели.</h1>
+    
+    <div class="section">
+        <span class="bold-text rainbow-text">При работе с графикой Вы имеете дело с изображениями, а они обязательно имеют цвет, пусть даже просто черный и белый.</span>
+        <span class="indent" id="text-block-1">В компьютерном изображении содержится информация об использованных в нем цветах. Редактирование изображений включает и изменение информации о цветах. В связи с этим возникает задача выражения цвета в численном виде. Она относится к весьма сложным.</span>
+    </div>
+    
+    <div class="section">
+        <span class="bold-text rainbow-text">Реальный свет (например, дневной)</span>
+        <span class="line-break rainbow-text">представляет собой смесь</span>
+        <span class="line-break rainbow-text">различных световых волн,</span>
+        <span class="line-break rainbow-text">то есть имеет сложный спектр.</span>
+    </div>
+    
+    <div class="section">
+        <span class="bold-text" id="text-block-2">Человеческий глаз</span> улавливает световые волны в определенном интервале длин и интенсивностей (видимый спектр излучения). Затем мозг обрабатывает <span class="bold-text" id="text-block-3">поступающие</span> сигналы, и в зависимости от сочетания длин волн и их интенсивности человек воспринимает предметы различным образом окрашенными.
+    </div>
+    
+    <div class="section">
+        <span class="bold-text rainbow-text">Таким образом, реально цвет относится не только к самому предмету, но и к особенностям физиологического восприятия конкретного наблюдателя.</span> <span class="italic rainbow-text">Разные люди видят цвет по-разному.</span> Поскольку в восприятии цвета участвует мозг, в этом процессе есть свои феномены. На некоторых из них основаны полиграфические процессы. Так, метод четырехцветной растровой печати основан на склонности мозга к смешению и обобщению. В результате мозаика цветных точек (растр) превращается для наблюдателя в реалистичную картинку.
+    </div>
+
+    <script>
+        // Функция для преобразования текста в разноцветные буквы
+        function createRainbowText(elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const text = element.textContent;
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.className = 'rainbow-letter';
+                span.textContent = text[i];
+                span.style.animationDelay = ${i * 0.05}s;
+                element.appendChild(span);
+            }
+        }
+
+        // Применяем эффект к нужным блокам текста
+        document.addEventListener('DOMContentLoaded', () => {
+            createRainbowText('text-block-1');
+            createRainbowText('text-block-2');
+            createRainbowText('text-block-3');
+        });
+    </script>
+</body>
+</html>
