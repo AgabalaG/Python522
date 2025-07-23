@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball Diagram</title>
+    <style>
+        body {
+            background-color: #fff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Cover the whole viewport */
+            margin: 0;
+        }
+
+        svg {
+            border: 1px solid #ddd; /* Optional: add a border for visualization */
+        }
+    </style>
+</head>
+<body>
+
+    <svg width="600" height="400">
+        <!-- Ball Starting Position -->
+        <circle cx="50" cy="50" r="20" stroke="black" stroke-width="2" fill="none" />
+        <line x1="30" y1="50" x2="40" y2="50" stroke="black" stroke-width="2" />
+
+        <!-- First Bounce Arc -->
+        <path d="M50,50 Q200,200 300,350" stroke="black" stroke-width="2" fill="none" />
+        <ellipse cx="300" cy="360" rx="30" ry="10" stroke="black" stroke-width="2" fill="none" />
+        <line x1="300" y1="350" x2="300" y2="350" stroke="black" stroke-width="2" />
+
+        <!-- Second Bounce Arc -->
+        <path d="M300,350 Q400,270 450,350" stroke="black" stroke-width="2" fill="none" />
+        <ellipse cx="450" cy="360" rx="20" ry="8" stroke="black" stroke-width="2" fill="none" />
+         <line x1="450" y1="350" x2="450" y2="350" stroke="black" stroke-width="2" />
+        <!-- Third Bounce Arc -->
+        <path d="M450,350 Q500,330 530,350" stroke="black" stroke-width="2" fill="none" />
+        <ellipse cx="530" cy="360" rx="10" ry="5" stroke="black" stroke-width="2" fill="none" />
+        <line x1="530" y1="350" x2="530" y2="350" stroke="black" stroke-width="2" />
+
+        <!-- Ground Elements -->
+        <line x1="50" y1="380" x2="80" y2="380" stroke="black" stroke-width="4" />
+        <circle cx="200" cy="380" r="4" fill="black" />
+        <line x1="450" y1="380" x2="480" y2="380" stroke="black" stroke-width="4" />
+
+         <!--Additional ellipses to depict multiple bounces at end-->
+         <ellipse cx="540" cy="365" rx="8" ry="4" stroke="black" stroke-width="2" fill="none" />
+         <ellipse cx="550" cy="360" rx="7" ry="3" stroke="black" stroke-width="2" fill="none" />
+         <ellipse cx="560" cy="355" rx="6" ry="2" stroke="black" stroke-width="2" fill="none" />
+    </svg>
+
+</body>
+</html>
