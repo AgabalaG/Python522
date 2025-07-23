@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать аккаунт Google</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4285F4;
+            margin-bottom: 10px;
+        }
+        .subheader {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-example {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .check-availability {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        .checkbox {
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .terms {
+            font-size: 12px;
+            margin-top: 20px;
+            color: #666;
+        }
+        .location {
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .captcha-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Gmail</div>
+        <div>by Google</div>
+    </div>
+
+    <div class="subheader">Создать аккаунт</div>
+
+    <p>Ваш аккаунт Google обеспечивает доступ к Gmail и другим службам Google. Если у вас уже есть аккаунт Google, <a href="#">войдите в него здесь</a>.</p>
+
+    <div class="subheader">Начало работы с Gmail</div>
+
+    <form>
+        <div class="form-group">
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" name="firstName">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" name="lastName">
+        </div>
+
+        <div class="form-group">
+            <label for="username">Имя для входа (логин):</label>
+            <input type="text" id="username" name="username">
+            <div class="login-example">Например: IPetrov, Ivan.Petrov</div>
+            <a href="#" class="check-availability">проверить доступность</a>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Укажите пароль:</label>
+            <input type="password" id="password" name="password">
+            <div class="login-example">Минимальная длина — 8 символов.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Введите пароль еще раз:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+        </div>
+
+        <div class="checkbox-group">
+            <div class="checkbox">
+                <input type="checkbox" id="staySignedIn" checked>
+                <label for="staySignedIn">Оставаться в системе</label>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="webHistory" checked>
+                <label for="webHistory">Включить История веб-поиска <a href="#">Дополнительная информация</a></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="securityQuestion">Секретный вопрос:</label>
+            <select id="securityQuestion" name="securityQuestion" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                <option>Выберите вопрос ...</option>
+            </select>
+            <div class="login-example">Если вы забудете пароль, мы попросим вас ответить на секретный вопрос. <a href="#">Дополнительная информация</a></div>
+        </div>
+
+        <div class="form-group">
+            <label for="securityAnswer">Ответ:</label>
+            <input type="text" id="securityAnswer" name="securityAnswer">
+        </div>
+
+        <div class="form-group">
+            <label for="recoveryEmail">Контактный e-mail:</label>
+            <input type="email" id="recoveryEmail" name="recoveryEmail">
+            <div class="login-example">Этот адрес используется для проверки подлинности аккаунта в том случае, если возникнет проблема или вы забыли свой пароль. Если у вас нет другого адреса электронной почты, можете оставить это поле пустым. <a href="#">Дополнительная информация</a></div>
+        </div>
+
+        <div class="location">
+            <label>Местоположение:</label>
+            <div>Украина (Україна)</div>
+        </div>
+
+        <div class="form-group">
+            <label for="captcha">Проверка слова:</label>
+            <input type="text" id="captcha" name="captcha">
+            <div class="captcha-note">Буквы вводятся без учёта регистра.</div>
+        </div>
+
+        <div class="terms">
+            <p>Проверьте введенную выше информацию для аккаунта Google (внесите все необходимые изменения) и ознакомьтесь с <a href="#">Условиями использования</a>.</p>
+            <p><a href="#">Версия для печати</a></p>
+            <p>Нажимая расположенную ниже кнопку "Принимаю", вы принимаете Условия использования, изложенные выше, а также Правила программы и Политику конфиденциальности.</p>
+        </div>
+
+        <button type="submit" class="submit-btn">Я принимаю условия. Создайте мой аккаунт.</button>
+    </form>
+</body>
+</html>
