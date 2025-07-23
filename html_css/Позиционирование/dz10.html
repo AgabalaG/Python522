@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Расчет стоимости покупки со скидкой</title>
+</head>
+<body>
+
+  <script>
+    // 1. Получаем стоимость покупки от пользователя
+    let purchaseAmount = parseFloat(prompt("Введите стоимость покупки:"));
+
+    // Проверяем, успешно ли введено число
+    if (isNaN(purchaseAmount)) {
+      alert("Пожалуйста, введите корректную числовую стоимость.");
+    } else {
+      // 2. Определяем размер скидки
+      let discountPercentage = 0;
+      if (purchaseAmount > 1000) {
+        discountPercentage = 5;
+      } else if (purchaseAmount > 500) {
+        discountPercentage = 3;
+      }
+
+      // 3. Вычисляем скидку и итоговую стоимость
+      let discountAmount = purchaseAmount * (discountPercentage / 100);
+      let finalAmount = purchaseAmount - discountAmount;
+
+      // 4. Выводим результаты на экран
+      document.write("Стоимость покупки без скидки: " + purchaseAmount + "руб<br>");
+      document.write("Скидка: " + discountPercentage + "%<br>");
+      document.write("Итоговая стоимость: " + finalAmount + "руб");
+    }
+  </script>
+
+</body>
+</html>
+
