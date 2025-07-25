@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Таблица умножения</title>
+    <style>
+        table {
+            border-collapse: collapse; /* Убираем двойные границы */
+            margin: 20px auto; /* Центрируем таблицу */
+        }
+
+        td {
+            width: 40px;  /* фиксированная ширина ячейки */
+            height: 40px; /* фиксированная высота ячейки*/
+            border: 1px solid black; /* Обводим ячейки черным */
+            text-align: center; /* Центрируем текст в ячейке */
+            font-size: 16px; /* Размер шрифта */
+            font-family: sans-serif; /* Шрифт */
+        }
+
+        .yellow {
+            background-color: yellow; /* Желтый фон */
+        }
+
+        .red {
+            background-color: red; /* Красный фон */
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <!-- Таблица будет сгенерирована JavaScript -->
+    </table>
+
+    <script>
+        const table = document.querySelector("table"); // Получаем ссылку на таблицу
+
+        // Генерируем таблицу
+        for (let i = 1; i <= 10; i++) {
+            const row = table.insertRow(); // Добавляем строку в таблицу
+
+            for (let j = 1; j <= 10; j++) {
+                const cell = row.insertCell(); // Добавляем ячейку в строку
+                const product = i * j;        // Вычисляем произведение
+                cell.textContent = product;  // Помещаем произведение в ячейку
+
+                // Определяем цвет фона ячейки
+                if ((i + j) % 2 === 0) {
+                    cell.classList.add("yellow"); // Если сумма i и j четная - желтый фон
+                } else {
+                    cell.classList.add("red");    // Иначе - красный фон
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
+
