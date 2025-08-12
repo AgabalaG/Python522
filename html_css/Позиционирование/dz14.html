@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Показать/Спрятать картинку</title>
+  <style>
+    body {
+      font-family: serif;
+      font-size: 32px;
+      padding: 10px;
+    }
+    .links {
+      margin-bottom: 5px;
+    }
+    .links a {
+      color: #473292;
+      text-decoration: underline;
+      margin-right: 10px;
+      font-size: 36px;
+      font-family: Times New Roman, serif;
+    }
+    img {
+      max-width: 98%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="links">
+    <a href="#" id="show">Показать</a>
+    <a href="#" id="hide">Спрятать</a>
+  </div>
+  <img id="bird" src="https://i.imgur.com/Dq1mGQ6.jpg" alt="bird">
+  
+  <script>
+    const showBtn = document.getElementById('show');
+    const hideBtn = document.getElementById('hide');
+    const img = document.getElementById('bird');
+
+    showBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      img.style.display = 'block';
+    });
+
+    hideBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      img.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
