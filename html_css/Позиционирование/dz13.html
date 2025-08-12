@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Месяцы с цветом</title>
+    <style>
+        .month {
+            width: 400px;
+            height: 28px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 2px;
+            color: #222;
+            line-height: 28px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var months = [
+            "январь", "февраль", "март", "апрель", "май", "июнь",
+            "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
+        ];
+
+        function getRandomColor() {
+            // Яркие цвета
+            var colors = [
+                "#aecbd6", "#aecbd6", // Серый-голубой январь, февраль
+                "#228b22", "#32cd32", "#90ee90", "#c0eb75", // Зеленые весна
+                "#ff69b4", "#ffb6c1", "#ffea00", // Летние розовые, желтые
+                "#ffa500", "#ff4500", // Оранжевые осень
+                "#8e44ad", "#a569bd" // Фиолетовые зимние
+            ];
+            // Детализируем цвета по месяцам как на фото
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        for (var i = 0; i < months.length; i++) {
+            // Для имитации как на фото, задаем цвета по позициям
+            var colorArr = [
+                "#aecbd6", "#aecbd6", "#228b22", "#32cd32",
+                "#90ee90", "#c0eb75", "#ff69b4", "#ffb6c1",
+                "#ffea00", "#ffa500", "#ff4500", "#8e44ad"
+            ];
+
+            document.write(
+                '<div class="month" style="background:' + colorArr[i] + ';">'
+                + months[i] + '</div>'
+            );
+        }
+    </script>
+</body>
+</html>
