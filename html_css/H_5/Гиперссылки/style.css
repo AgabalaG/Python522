@@ -1,0 +1,28 @@
+a{
+    color: pink;
+}
+a:link{
+    color: orangered;
+}
+a:visited{
+    color: blue;
+}
+a:hover{
+    color: green;
+}
+
+a:active{
+    color: blueviolet;
+}
+div{
+    background: green;
+    height: 100px;
+    width: 100px;
+
+}
+div:hover{
+    background: orange;
+    height: 200px;
+    cursor: pointer
+}
+

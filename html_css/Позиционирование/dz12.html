@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Термостат</title>
+    <style>
+        .resetFont {
+            font-size: 20pt;
+            font-weight: 400;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Выводим пустой div с идентификатором demonstration
+    document.write("<div id='demonstration'></div>");
+
+    // Получаем элемент по идентификатору demonstration
+    var div = document.getElementById('demonstration');
+
+    // Задаем текстовое содержимое
+    div.innerHTML = "Термоста́т — прибор для поддержания постоянной температуры. Поддержание температуры " +
+                    "обеспечивается либо за счёт использования терморегуляторов, либо осуществлением фазового " +
+                    "перехода (например, таяние льда). Для уменьшения потерь тепла или холода термостаты, как " +
+                    "правило, теплоизолируют. Но не всегда. Широко известны автомобильные моторы, где летом нет " +
+                    "никакой теплоизоляции и за счёт действия восковых термостатов поддерживается постоянная " +
+                    "температура. Другим примером термостата, широко используемого в быту, является холодильник.";
+
+    // Применяем стили
+    div.style.backgroundColor = 'yellow';
+    div.style.color = 'black';
+    div.style.width = '256px';
+    div.style.height = '256px';
+    div.style.overflow = 'scroll';
+    div.style.outline = '1px dashed red';
+
+    // Применяем класс resetFont
+    div.className = 'resetFont';
+</script>
+
+</body>
+</html>
