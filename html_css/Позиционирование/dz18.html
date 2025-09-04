@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гостевая книга с подсветкой email</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #4a69bd;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+        }
+        
+        .form-section, .messages-section {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a69bd;
+            color: #4a69bd;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #4a69bd;
+            box-shadow: 0 0 0 2px rgba(74, 105, 189, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background: #4a69bd;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #3c58a8;
+        }
+        
+        .message {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4a69bd;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #4a69bd;
+        }
+        
+        .message-content {
+            line-height: 1.6;
+        }
+        
+        .email {
+            color: #1e74fd;
+            font-weight: 600;
+        }
+        
+        .empty-messages {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            padding: 30px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Гостевая книга</h1>
+            <p class="description">Добавляйте сообщения с email-адресами, которые будут автоматически подсвечиваться</p>
+        </header>
+        
+        <div class="content">
+            <section class="form-section">
+                <h2>Добавить сообщение</h2>
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" placeholder="Введите ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" placeholder="Введите ваше сообщение (может содержать email-адреса)" required></textarea>
+                    </div>
+                    <button type="submit">Добавить сообщение</button>
+                </form>
+            </section>
+            
+            <section class="messages-section">
+                <h2>Сообщения пользователей</h2>
+                <div id="messagesContainer">
+                    <div class="empty-messages">Пока нет сообщений. Будьте первым!</div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Гостевая книга с подсветкой email-адресов &copy; 2023</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageForm = document.getElementById('messageForm');
+            const messagesContainer = document.getElementById('messagesContainer');
+            
+            // Загрузка сообщений из localStorage при загрузке страницы
+            loadMessages();
+            
+            // Обработка отправки формы
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const messageText = document.getElementById('message').value.trim();
+                
+                if (name && messageText) {
+                    addMessage(name, messageText);
+                    messageForm.reset();
+                }
+            });
+            
+            // Функция добавления сообщения
+            function addMessage(name, text) {
+                // Создаем объект сообщения с временной меткой
+                const message = {
+                    id: Date.now(),
+                    name: name,
+                    text: text,
+                    date: new Date().toLocaleString('ru-RU')
+                };
+                
+                // Получаем существующие сообщения из localStorage
+                let messages = JSON.parse(localStorage.getItem('guestbookMessages')) || [];
+                
+                // Добавляем новое сообщение
+                messages.unshift(message);
+                
+                // Сохраняем обновленный список сообщений
+                localStorage.setItem('guestbookMessages', JSON.stringify(messages));
+                
+                // Обновляем отображение
+                loadMessages();
+            }
+            
+            // Функция загрузки сообщений
+            function loadMessages() {
+                // Получаем сообщения из localStorage
+                const messages = JSON.parse(localStorage.getItem('guestbookMessages')) || [];
+                
+                // Очищаем контейнер
+                messagesContainer.innerHTML = '';
+                
+                if (messages.length === 0) {
+                    messagesContainer.innerHTML = '<div class="empty-messages">Пока нет сообщений. Будьте первым!</div>';
+                    return;
+                }
+                
+                // Добавляем каждое сообщение в контейнер
+                messages.forEach(msg => {
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message');
+                    
+                    // Подсвечиваем email-адреса в тексте
+                    const highlightedText = highlightEmails(msg.text);
+                    
+                    messageElement.innerHTML = `
+                        <div class="message-header">
+                            <span>${msg.name}</span>
+                            <span>${msg.date}</span>
+                        </div>
+                        <div class="message-content">${highlightedText}</div>
+                    `;
+                    
+                    messagesContainer.appendChild(messageElement);
+                });
+            }
+            
+            // Функция для подсветки email-адресов
+            function highlightEmails(text) {
+                // Регулярное выражение для поиска email-адресов
+                const emailRegex = /([a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9_-]+)/gi;
+                
+                // Заменяем email-адреса на span с классом для стилизации
+                return text.replace(emailRegex, '<span class="email">$1</span>');
+            }
+            
+            // Добавим пример сообщения, если localStorage пуст
+            if (!localStorage.getItem('guestbookMessages')) {
+                const sampleText = "Настоящие условия лицензии являются соглашением sergey@mail.ru между корпорацией Microsoft (или, в зависимости от места вашего проживания, одним из ее аффилированных лиц) и вами. Прочтите их внимательно. Они применяются к вышеуказанному программному обеспечению, включая носители, на которых оно распространяется (если они есть). Условия лицензионного соглашения, предоставляемые в печатном виде, которые могут mister_900@gmail.com сопровождать программное обеспечение, имеют преимущественную силу над любыми условиями лицензии, предоставляемыми в электронном виде. Эти условия terter_3333.mig@bk.ru распространяются также на все";
+                
+                addMessage("Пример пользователя", sampleText);
+            }
+        });
+    </script>
+</body>
+</html>
